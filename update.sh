@@ -17,13 +17,6 @@ wget -O newTypes.json --compression=auto https://raw.githubusercontent.com/Mictr
 wget -O mic-db.zip https://www.mictronics.de/aircraft-database/indexedDB_old.php
 unzip -o mic-db.zip
 
-wget -O basic-ac-db.json.gz https://downloads.adsbexchange.com/downloads/basic-ac-db.json.gz
-gunzip -c basic-ac-db.json.gz > basic-ac-db.json
-sed -i basic-ac-db.json \
-    -e 's#\\\\.##g' \
-    -e 's#\\.##g' \
-    -e 's#\\##g'
-
 function compress() {
     rm -f "$1.gz"
     7za a -mx=9 "$1.gz" "$1"
@@ -46,7 +39,7 @@ sed -e 's#\\u00c9#\xc3\x89#g' \
 
 perl -i -pe 's/\\u00(..)/chr(hex($1))/eg' aircraftUtf.json
 
-./toJson.py aircraftUtf.json db newTypes.json basic-ac-db.json
+./toJson.py aircraftUtf.json db newTypes.json
 
 sed -i -e 's/\\;/,/' aircraft.csv
 
