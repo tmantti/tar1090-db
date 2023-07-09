@@ -11,7 +11,7 @@ function getGIT() {
     popd; return 1;
 }
 
-getGIT https://github.com/chrisglobe/adsbx-type-longnames-chrisglobe.git main "$(pwd)/longnames"
+getGIT https://github.com/rhysackerman/tar1090-longtypes.git main "$(pwd)/longnames"
 
 wget -O newTypes.json --compression=auto https://raw.githubusercontent.com/Mictronics/readsb-protobuf/dev/webapp/src/db/types.json
 wget -O mic-db.zip https://www.mictronics.de/aircraft-database/indexedDB_old.php
